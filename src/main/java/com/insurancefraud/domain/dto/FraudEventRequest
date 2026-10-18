@@ -1,0 +1,15 @@
+package com.insurancefraud.domain.dto;
+
+import lombok.Data;
+
+import java.math.BigDecimal;
+
+@Data
+public class FraudEventRequest {
+
+    private String customerId;
+
+    private String policyNumber;
+
+    private BigDecimal amount;
+}

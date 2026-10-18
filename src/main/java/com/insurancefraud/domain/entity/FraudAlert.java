@@ -1,0 +1,42 @@
+package com.insurancefraud.domain.entity;
+
+/* Import enums to represent the current status of a fraud alert(AlertStatus)
+and the risk level of a fraud alert(RiskLevel)*/
+import com.insurancefraud.domain.enums.AlertStatus;
+import com.insurancefraud.domain.enums.RiskLevel;
+
+// Import JPA annotations used to map this Java class to a database table
+import jakarta.persistence.*;
+
+// Import lombok annotations to generate common Java methods and constructors
+import lombok.*;
+
+import java.time.LocalDateTime;
+import java.util.UUID;
+
+// Marks this class as a JPA entity so it can be stored in a database
+@Entity
+@Table(name = "fraud_alert") // Specifies table name for this entity
+@Getter // Auto-generates getter methods for all fields
+@Setter // Auto-generates setter methods for all fields
+@NoArgsConstructor // Generates a constructor with no arguments
+@AllArgsConstructor // Generates a constructor with  for all fields
+@Builder // Enables the builder pattern for creating FraudAlert objects
+
+public class FraudAlert {
+
+    @Id
+    private UUID alertId; //Marks alertId as PK of fraud_alert database table
+
+    private UUID eventId; //Stores the unique identifier of the event that triggered the alert
+
+    private String ruleTriggered; // Stores the name of the fraud detection rule that was triggered
+
+    @Enumerated(EnumType.STRING) // Stores the risk level (LOW, MEDIUM, HIGH)
+    private RiskLevel riskLevel; // EnumTypes.String stores the enums name in the database as text
+
+    @Enumerated(EnumType.STRING) // Stores the current status of the alert (OPEN, RESOLVED)
+    private AlertStatus status; // EnumType.STRING avoids storing enum values as numeric positions
+
+    private LocalDateTime alertDate;
+}
