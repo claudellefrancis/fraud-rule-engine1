@@ -12,7 +12,7 @@ import jakarta.persistence.*;
 import lombok.*;
 
 import java.time.LocalDateTime;
-import java.util.UUID;
+import java.util.UUID; // Import UUID to represent unique identifiers for alerts and related events
 
 // Marks this class as a JPA entity so it can be stored in a database
 @Entity
