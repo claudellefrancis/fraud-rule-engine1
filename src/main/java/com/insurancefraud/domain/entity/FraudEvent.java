@@ -4,6 +4,7 @@ import jakarta.persistence.*;
 import lombok.*;
 
 import java.math.BigDecimal;
+import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.util.UUID;
 
@@ -26,4 +27,18 @@ public class FraudEvent {
     private BigDecimal amount;
 
     private LocalDateTime eventDate;
+
+    private String phoneNumber;
+
+    private String beneficiaryAccount;
+
+    private LocalDate policyStartDate;
+
+    private LocalDate claimDate;
+
+    private Boolean payoutReceived;
+
+    private Boolean beneficiaryChanged;
+
+    private LocalDate beneficiaryChangeDate;
 }

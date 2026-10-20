@@ -6,4 +6,6 @@ public interface FraudRuleEvaluator {
 
     boolean evaluate(FraudEvent event);
 
+    String getRuleName();
+
 }
