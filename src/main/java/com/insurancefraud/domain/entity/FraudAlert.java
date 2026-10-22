@@ -26,7 +26,10 @@ import java.util.UUID; // Import UUID to represent unique identifiers for alerts
 public class FraudAlert {
 
     @Id
+    @GeneratedValue(strategy = GenerationType.UUID)
     private UUID alertId; //Marks alertId as PK of fraud_alert database table
+
+    private String alertType;
 
     private UUID eventId; //Stores the unique identifier of the event that triggered the alert
 

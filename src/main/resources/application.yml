@@ -1,13 +1,28 @@
-spring:
-  application:
-    name: fraud-rule-engine
+  spring:
+    application:
+      name: fraud-rule-engine
 
-  flyway:
-    enabled: false
+    datasource:
+      url: jdbc:mysql://localhost:3306/fraud_rule_engine
+      username: root
+      password: FraudEngine89!
+      driver-class-name: com.mysql.cj.jdbc.Driver
 
-  autoconfigure:
-    exclude:
-      - org.springframework.boot.autoconfigure.jdbc.DataSourceAutoConfiguration
+    jpa:
+      hibernate:
+        ddl-auto: update
+      show-sql: true
 
-server:
-  port: 8080
+    sql:
+      init:
+        mode: never
+
+    flyway:
+      enabled: false
+
+  server:
+    port: 8080
+
+  fraud:
+    claims:
+      threshold: 50000

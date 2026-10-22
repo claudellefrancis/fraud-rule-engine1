@@ -26,6 +26,8 @@ public class FraudEvent {
 
     private BigDecimal amount;
 
+    private BigDecimal claimAmount;
+
     private LocalDateTime eventDate;
 
     private String phoneNumber;
@@ -41,4 +43,5 @@ public class FraudEvent {
     private Boolean beneficiaryChanged;
 
     private LocalDate beneficiaryChangeDate;
+
 }
