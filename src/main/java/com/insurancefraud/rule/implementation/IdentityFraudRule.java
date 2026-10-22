@@ -13,7 +13,7 @@ import java.time.LocalDateTime;
 public class IdentityFraudRule
         implements FraudRuleEvaluator {
 
-    private final FraudEventRepository fraudEventRepository;
+     private final FraudEventRepository fraudEventRepository;
 
     @Override
     // New event arrives
@@ -23,7 +23,7 @@ public class IdentityFraudRule
                 LocalDateTime.now().minusDays(30);
 
         long count =
-                fraudEventRepository
+                 fraudEventRepository
                         .countByPhoneNumberAndEventDateAfter(
                                 event.getPhoneNumber(),
                                 thirtyDaysAgo);
