@@ -1,3 +1,5 @@
+// Represents incoming fraud events
+
 package com.insurancefraud.domain.entity;
 
 import jakarta.persistence.*;

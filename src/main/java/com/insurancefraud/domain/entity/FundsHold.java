@@ -1,3 +1,5 @@
+// Represents held funds
+
 package com.insurancefraud.domain.entity;
 
 import jakarta.persistence.Entity;
@@ -18,6 +20,7 @@ import java.util.UUID;
 @Builder // Enables the builder pattern for creating FraudCase objects
 
 public class FundsHold {
+
     @Id
     private UUID holdId;
 

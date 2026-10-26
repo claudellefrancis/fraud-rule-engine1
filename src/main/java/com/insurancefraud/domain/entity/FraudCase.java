@@ -1,3 +1,5 @@
+// Represents investigation cases
+
 package com.insurancefraud.domain.entity;
 
 import com.insurancefraud.domain.enums.CaseStatus;
@@ -20,7 +22,10 @@ public class FraudCase {
     @Id
     private UUID caseId;
 
-    private UUID alertId;
+    // FraudEvent -> FraudAlert -> FraudCase and mirrors SDD
+    @OneToOne
+    @JoinColumn(name = "alert_id")
+    private FraudAlert fraudAlert;
 
     private String investigator;
 

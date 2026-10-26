@@ -5,6 +5,7 @@ import com.insurancefraud.domain.entity.FraudEvent;
 import com.insurancefraud.domain.enums.AlertStatus;
 import com.insurancefraud.domain.enums.RiskLevel;
 import com.insurancefraud.repository.FraudAlertRepository;
+import com.insurancefraud.repository.FraudEventRepository;
 import com.insurancefraud.rule.engine.FraudRuleEngine;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
@@ -19,7 +20,7 @@ public class FraudDetectionService {
 
     private final FraudRuleEngine fraudRuleEngine;
 
-    private final FraudAlertRepository fraudAlertRepository;
+    private final FraudEventRepository fraudEventRepository;
 
     public List<String> evaluate(FraudEvent event) {
 
@@ -31,6 +32,7 @@ public class FraudDetectionService {
             FraudAlert alert =
                     FraudAlert.builder()
                             .alertId(UUID.randomUUID())
+                            .fraudEvent(event)
                             .ruleTriggered(
                                     triggeredRules.get(0))
                             .riskLevel(RiskLevel.HIGH)
@@ -38,7 +40,7 @@ public class FraudDetectionService {
                             .alertDate(LocalDateTime.now())
                             .build();
 
-            fraudAlertRepository.save(alert);
+            fraudEventRepository.save(event);
         }
 
         return triggeredRules;
