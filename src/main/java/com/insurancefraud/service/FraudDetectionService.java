@@ -1,13 +1,17 @@
 package com.insurancefraud.service;
 
 import com.insurancefraud.domain.entity.FraudAlert;
+import com.insurancefraud.domain.entity.FraudCase;
 import com.insurancefraud.domain.entity.FraudEvent;
 import com.insurancefraud.domain.enums.AlertStatus;
+import com.insurancefraud.domain.enums.CaseStatus;
 import com.insurancefraud.domain.enums.RiskLevel;
 import com.insurancefraud.repository.FraudEventRepository;
 import com.insurancefraud.repository.FraudAlertRepository;
+import com.insurancefraud.repository.FraudCaseRepository;
 import com.insurancefraud.rule.engine.FraudRuleEngine;
 import lombok.RequiredArgsConstructor;
+import org.hibernate.boot.jaxb.hbm.internal.CacheAccessTypeConverter;
 import org.springframework.stereotype.Service;
 
 import java.time.LocalDateTime;
@@ -23,6 +27,8 @@ public class FraudDetectionService {
     private final FraudAlertRepository fraudAlertRepository;
 
     private final FraudEventRepository fraudEventRepository;
+
+    private final FraudCaseRepository fraudCaseRepository;
 
     public List<String> evaluate(FraudEvent event) {
 
@@ -42,7 +48,20 @@ public class FraudDetectionService {
                             .alertDate(LocalDateTime.now())
                             .build();
 
+            fraudEventRepository.save(event);
             fraudAlertRepository.save(alert);
+
+            FraudCase fraudCase =
+                    FraudCase.builder()
+                            .caseId(UUID.randomUUID())
+                            .alertId(alert.getAlertId())
+                            .investigator("UNASSIGNED")
+                            .status(CaseStatus.OPEN)
+                            .createdDate(LocalDateTime.now())
+                            .build();
+
+            fraudCaseRepository.save(fraudcase);
+
         }
 
         return triggeredRules;

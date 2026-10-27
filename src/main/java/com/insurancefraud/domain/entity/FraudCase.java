@@ -3,6 +3,8 @@
 package com.insurancefraud.domain.entity;
 
 import com.insurancefraud.domain.enums.CaseStatus;
+import com.insurancefraud.repository.FraudAlertRepository;
+import com.insurancefraud.repository.FraudCaseRepository;
 import jakarta.persistence.*;
 import lombok.*;
 
@@ -33,5 +35,4 @@ public class FraudCase {
         private CaseStatus status;
 
     private LocalDateTime createdDate;
-
 }
