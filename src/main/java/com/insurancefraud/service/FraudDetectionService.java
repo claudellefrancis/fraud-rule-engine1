@@ -4,8 +4,8 @@ import com.insurancefraud.domain.entity.FraudAlert;
 import com.insurancefraud.domain.entity.FraudEvent;
 import com.insurancefraud.domain.enums.AlertStatus;
 import com.insurancefraud.domain.enums.RiskLevel;
-import com.insurancefraud.repository.FraudAlertRepository;
 import com.insurancefraud.repository.FraudEventRepository;
+import com.insurancefraud.repository.FraudAlertRepository;
 import com.insurancefraud.rule.engine.FraudRuleEngine;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
@@ -19,6 +19,8 @@ import java.util.UUID;
 public class FraudDetectionService {
 
     private final FraudRuleEngine fraudRuleEngine;
+
+    private final FraudAlertRepository fraudAlertRepository;
 
     private final FraudEventRepository fraudEventRepository;
 
