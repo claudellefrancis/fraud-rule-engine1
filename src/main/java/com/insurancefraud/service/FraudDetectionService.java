@@ -42,7 +42,7 @@ public class FraudDetectionService {
                             .alertDate(LocalDateTime.now())
                             .build();
 
-            fraudEventRepository.save(event);
+            fraudAlertRepository.save(alert);
         }
 
         return triggeredRules;

@@ -1,22 +1,21 @@
 services:
-  version: '3.8'
+  mysql:
+    image: mysql:8.4
+    container_name: fraud-mysql
 
-  services:
+    environment:
+      MYSQL_DATABASE: frauddb
+      MYSQL_USER: frauduser
+      MYSQL_PASSWORD: fraudpassword
+      MYSQL_ROOT_PASSWORD: rootpassword
 
-    postgres:
-      image: postgres:17
-      container_name: fraud-postgres
+    ports:
+      - "13306:3306"
 
-      environment:
-        POSTGRES_DB: frauddb
-        POSTGRES_USER: frauduser
-        POSTGRES_PASSWORD: fraudpassword
+    volumes:
+      - mysql_data:/var/lib/mysql
 
-      ports:
-        - "5432:5432"
+    restart: unless-stopped
 
-      volumes:
-        - postgres_data:/var/lib/postgresql/data
-
-  volumes:
-    postgres_data:
+volumes:
+  mysql_data:
