@@ -1,6 +1,6 @@
 CREATE TABLE fraud_alert (
-                             alert_id UUID PRIMARY KEY,
-                             event_id UUID,
+                             alert_id VARCHAR(36) PRIMARY KEY,
+                             event_id VARCHAR(36),
                              alert_type VARCHAR(50),
                              rule_triggered VARCHAR(100),
                              risk_level VARCHAR(20),

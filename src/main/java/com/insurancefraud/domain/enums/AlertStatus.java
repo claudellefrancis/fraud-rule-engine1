@@ -2,7 +2,7 @@ package com.insurancefraud.domain.enums;
 
 public enum AlertStatus {
 
-    HIGH_RISK,
+    OPEN,
     INVESTIGATION,
     MULE_ACCOUNT
 }

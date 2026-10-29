@@ -11,7 +11,6 @@ import com.insurancefraud.repository.FraudAlertRepository;
 import com.insurancefraud.repository.FraudCaseRepository;
 import com.insurancefraud.rule.engine.FraudRuleEngine;
 import lombok.RequiredArgsConstructor;
-import org.hibernate.boot.jaxb.hbm.internal.CacheAccessTypeConverter;
 import org.springframework.stereotype.Service;
 
 import java.time.LocalDateTime;
@@ -44,7 +43,7 @@ public class FraudDetectionService {
                             .ruleTriggered(
                                     triggeredRules.get(0))
                             .riskLevel(RiskLevel.HIGH)
-                            .status(AlertStatus.HIGH_RISK)
+                            .status(AlertStatus.OPEN)
                             .alertDate(LocalDateTime.now())
                             .build();
 
@@ -54,13 +53,13 @@ public class FraudDetectionService {
             FraudCase fraudCase =
                     FraudCase.builder()
                             .caseId(UUID.randomUUID())
-                            .alertId(alert.getAlertId())
+                            .fraudAlert(alert)
                             .investigator("UNASSIGNED")
                             .status(CaseStatus.OPEN)
                             .createdDate(LocalDateTime.now())
                             .build();
 
-            fraudCaseRepository.save(fraudcase);
+            fraudCaseRepository.save(fraudCase);
 
         }
 
