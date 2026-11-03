@@ -21,6 +21,7 @@ public class FundsHold {
 
     @Id
     @GeneratedValue(strategy = GenerationType.UUID)
+    @Column(columnDefinition = "VARCHAR(36)")
     private UUID holdId;
 
     private String customerId;

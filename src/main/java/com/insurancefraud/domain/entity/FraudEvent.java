@@ -21,6 +21,7 @@ public class FraudEvent {
 
     @Id
     @GeneratedValue(strategy = GenerationType.UUID)
+    @Column(columnDefinition = "VARCHAR(36)")
     private UUID eventId;
 
     private String customerId;

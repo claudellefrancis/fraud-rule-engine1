@@ -29,6 +29,7 @@ public class FraudAlert {
 
     @Id
     @GeneratedValue(strategy = GenerationType.UUID)
+    @Column(columnDefinition = "VARCHAR(36)")
     private UUID alertId; //Marks alertId as PK of fraud_alert database table
 
     private String alertType;
