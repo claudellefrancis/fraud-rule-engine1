@@ -19,6 +19,7 @@
 
     flyway:
       enabled: false
+      baseline-on-migrate: true
 
   server:
     port: 8080

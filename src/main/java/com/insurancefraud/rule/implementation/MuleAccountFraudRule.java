@@ -15,6 +15,6 @@ public class MuleAccountFraudRule
 
     @Override
     public String getRuleName() {
-        return "Mule Account Fraud Rule";
+        return "Mule Account Fraud";
     }
 }

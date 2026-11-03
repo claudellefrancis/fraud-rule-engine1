@@ -15,6 +15,6 @@ public class BeneficiaryFraudRule
 
     @Override
     public String getRuleName() {
-        return "Beneficiary Fraud Rule";
+        return "Beneficiary Fraud";
     }
 }

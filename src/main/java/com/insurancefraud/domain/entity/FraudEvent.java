@@ -20,6 +20,7 @@ import java.util.UUID;
 public class FraudEvent {
 
     @Id
+    @GeneratedValue(strategy = GenerationType.UUID)
     private UUID eventId;
 
     private String customerId;

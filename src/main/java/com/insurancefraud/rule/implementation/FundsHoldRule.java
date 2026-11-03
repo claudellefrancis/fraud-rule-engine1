@@ -15,6 +15,6 @@ public class FundsHoldRule
 
     @Override
     public String getRuleName() {
-        return "Funds Hold Rule";
+        return "Funds Hold";
     }
 }

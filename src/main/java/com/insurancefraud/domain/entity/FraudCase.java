@@ -22,6 +22,7 @@ import java.util.UUID;
 public class FraudCase {
 
     @Id
+    @GeneratedValue(strategy = GenerationType.UUID)
     private UUID caseId;
 
     // FraudEvent -> FraudAlert -> FraudCase and mirrors SDD

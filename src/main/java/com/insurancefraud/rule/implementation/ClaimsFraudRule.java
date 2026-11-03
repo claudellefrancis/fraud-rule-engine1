@@ -37,6 +37,6 @@ public class ClaimsFraudRule implements FraudRuleEvaluator {
 
     @Override
     public String getRuleName() {
-        return "Claims Fraud Rule";
+        return "Claims Fraud";
     }
 }

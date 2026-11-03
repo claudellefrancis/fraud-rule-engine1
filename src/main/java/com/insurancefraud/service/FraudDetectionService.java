@@ -36,10 +36,11 @@ public class FraudDetectionService {
 
         if(!triggeredRules.isEmpty()) {
 
+            FraudEvent savedEvent = fraudEventRepository.save(event);
+
             FraudAlert alert =
                     FraudAlert.builder()
-                            .alertId(UUID.randomUUID())
-                            .fraudEvent(event)
+                            .fraudEvent(savedEvent)
                             .ruleTriggered(
                                     triggeredRules.get(0))
                             .riskLevel(RiskLevel.HIGH)
@@ -47,13 +48,13 @@ public class FraudDetectionService {
                             .alertDate(LocalDateTime.now())
                             .build();
 
-            fraudEventRepository.save(event);
-            fraudAlertRepository.save(alert);
+            FraudAlert savedAlert =
+                    fraudAlertRepository.save(alert);
 
             FraudCase fraudCase =
                     FraudCase.builder()
                             .caseId(UUID.randomUUID())
-                            .fraudAlert(alert)
+                            .fraudAlert(savedAlert)
                             .investigator("UNASSIGNED")
                             .status(CaseStatus.OPEN)
                             .createdDate(LocalDateTime.now())

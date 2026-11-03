@@ -34,6 +34,6 @@ public class IdentityFraudRule
     @Override
     public String getRuleName() {
 
-        return "Identity Fraud Rule";
+        return "Identity Fraud";
     }
 }
