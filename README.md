@@ -108,7 +108,6 @@ Stores information relating to held funds for suspicious activity.
 - Java 21+
 - Maven 3.9+
 - Docker Desktop
-- MySQL 8+
 - IntelliJ IDEA
 
 ---
@@ -116,29 +115,41 @@ Stores information relating to held funds for suspicious activity.
 ### Clone the Repository
 
 ```bash
-git clone <https://github.com/claudellefrancis/fraud-rule-engine1.git>
-cd fraud-rule-engine
+git clone https://github.com/claudellefrancis/fraud-rule-engine1.git
+cd fraud-rule-engine1
 ```
 
 ---
 
 ### Start MySQL using Docker
+Before running the command below, ensure Docker Desktop is installed and running:
 
 ```bash
-docker-compose up -d
+docker compose up -d
+```
+You should see a running MySql container named"
+
+```bash
+fraud-mysql
 ```
 
-Verify that MySQL is running:
+Verify that the container is running:
 
 ```bash
 docker ps
+```
+
+Stop the container:
+
+```bash
+docker compose down
 ```
 
 ---
 
 ### Configure Database
 
-application.yml:
+Add the below in the application.yml file:
 
 ```yaml
 spring:
