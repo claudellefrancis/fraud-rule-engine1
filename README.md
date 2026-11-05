@@ -129,9 +129,9 @@ docker compose up -d
 ```
 You should see a running MySql container named"
 
-```bash
-fraud-mysql
-```
+
+_fraud-mysql_
+
 
 Verify that the container is running:
 
@@ -206,6 +206,8 @@ http://localhost:8080/swagger-ui/index.html
 ---
 
 ## Sample Fraud Event Request
+Copy the below sample and paste on Swagger under the POST /api/fraud/evaluate section.
+Click on "Try it out" and click on "Execute" to trigger the fraud rule.
 
 ```json
 {
@@ -224,7 +226,24 @@ http://localhost:8080/swagger-ui/index.html
   "beneficiaryChangeDate": "2026-10-24"
 }
 ```
+Mock requests used for testing Fraud Rule Engine endpoints.
 
+high-risk-claim.json
+- Large claim amount
+- Beneficiary recently changed
+- Expected: HIGH risk alert
+
+repeat-phone-number.json
+- Reused phone number
+- Expected: Fraud rule triggered
+
+beneficiary-change.json
+- Beneficiary changed shortly before claim
+- Expected: Fraud rule triggered
+
+low-risk-claim.json
+- Normal claim
+- Expected: No fraud alert
 ---
 
 ## Sample Response

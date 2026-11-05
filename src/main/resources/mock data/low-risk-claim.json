@@ -1,0 +1,15 @@
+{
+  "eventId": "44444444-4444-4444-4444-444444444444",
+  "customerId": "CUST004",
+  "policyNumber": "POL004",
+  "amount": 0,
+  "claimAmount": 5000,
+  "eventDate": "2026-11-05T09:00:00Z",
+  "phoneNumber": "0845551234",
+  "beneficiaryAccount": "ACC999",
+  "policyStartDate": "2025-01-15",
+  "claimDate": "2026-11-05",
+  "payoutReceived": false,
+  "beneficiaryChanged": false,
+  "beneficiaryChangeDate": null
+}

@@ -15,10 +15,12 @@ import org.springframework.stereotype.Service;
 
 import java.time.LocalDateTime;
 import java.util.List;
-import java.util.UUID;
+
+import org.springframework.transaction.annotation.Transactional;
 
 @Service
 @RequiredArgsConstructor
+@Transactional
 public class FraudDetectionService {
 
     private final FraudRuleEngine fraudRuleEngine;
@@ -53,13 +55,14 @@ public class FraudDetectionService {
 
             FraudCase fraudCase =
                     FraudCase.builder()
-                            .caseId(UUID.randomUUID())
                             .fraudAlert(savedAlert)
                             .investigator("UNASSIGNED")
                             .status(CaseStatus.OPEN)
                             .createdDate(LocalDateTime.now())
                             .build();
 
+            System.out.println("Case ID = " + fraudCase.getCaseId());
+            System.out.println("Alert ID = " + savedAlert.getAlertId());
             fraudCaseRepository.save(fraudCase);
 
         }
