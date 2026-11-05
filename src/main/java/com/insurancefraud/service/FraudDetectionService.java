@@ -53,7 +53,6 @@ public class FraudDetectionService {
 
             FraudCase fraudCase =
                     FraudCase.builder()
-                            .caseId(UUID.randomUUID())
                             .fraudAlert(savedAlert)
                             .investigator("UNASSIGNED")
                             .status(CaseStatus.OPEN)
