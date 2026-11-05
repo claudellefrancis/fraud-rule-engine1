@@ -45,24 +45,24 @@ The Fraud Rule Engine processes insurance-related events and evaluates them agai
 
 ## Technology Stack
 
-| Technology | Purpose |
-|------------|----------|
-| Java 21 | Core application development |
-| Spring Boot 3 | Backend framework |
-| Spring Data JPA | ORM and persistence |
-| MySQL 8 | Relational database |
-| Flyway | Database migrations |
-| Maven | Dependency management and build tool |
-| Docker | Containerisation |
-| Lombok | Boilerplate code reduction |
-| Swagger/OpenAPI | API documentation |
+| Technology      | Purpose                              |
+|-----------------|--------------------------------------|
+| Java 21         | Core application development         |
+| Spring Boot 3   | Backend framework                    |
+| Spring Data JPA | ORM and persistence                  |
+| MySQL 8         | Relational database                  |
+| Flyway          | Database migrations                  |
+| Maven           | Dependency management and build tool |
+| Docker          | Containerisation                     |
+| Lombok          | Boilerplate code reduction           |
+| Swagger/OpenAPI | API documentation                    |
 
 ---
 
 ## Project Structure
 
 ```text
-src/main/java/com.insurancefraud
+src/main/java/com.insuranceFraud
 ├── config
 ├── controller
 │   └── FraudController
@@ -127,7 +127,7 @@ Before running the command below, ensure Docker Desktop is installed and running
 ```bash
 docker compose up -d
 ```
-You should see a running MySql container named"
+You should see a running MySql container named:
 
 
 _fraud-mysql_
