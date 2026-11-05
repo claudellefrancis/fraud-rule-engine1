@@ -250,7 +250,7 @@ low-risk-claim.json
 
 ```json
 [
-  "Claims Fraud Rule"
+  "Claims Fraud"
 ]
 ```
 
