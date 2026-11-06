@@ -171,6 +171,15 @@ Migration files are located in:
 src/main/resources/db/migration
 ```
 
+| Available Endpoints |                     |                       |
+|---------------------|---------------------|-----------------------|
+| Method              | Endpoint            | Description           |
+| POST                | /api/fraud/evaluate | Evaluate Fraud Event  |
+| GET                 | /api/alerts         | Retrieve fraud alerts |
+| GET                 | /api/cases          | Retrieve fraud cases  |
+| POST                | /api/funds-hold     | Create funds hold     |
+
+
 ---
 
 ### Build the Project
@@ -190,7 +199,7 @@ mvn spring-boot:run
 Application starts on:
 
 ```text
-http://localhost:8080
+http://localhost:8081
 ```
 
 ---
@@ -200,7 +209,7 @@ http://localhost:8080
 Access Swagger UI:
 
 ```text
-http://localhost:8080/swagger-ui/index.html
+http://localhost:8081/swagger-ui/index.html
 ```
 
 ---
@@ -211,7 +220,6 @@ Click on "Try it out" and click on "Execute" to trigger the fraud rule.
 
 ```json
 {
-  "eventId": "11111111-1111-1111-1111-111111111111",
   "customerId": "CUST001",
   "policyNumber": "POL001",
   "amount": 0,
@@ -226,25 +234,6 @@ Click on "Try it out" and click on "Execute" to trigger the fraud rule.
   "beneficiaryChangeDate": "2026-10-24"
 }
 ```
-Mock requests used for testing Fraud Rule Engine endpoints.
-
-high-risk-claim.json
-- Large claim amount
-- Beneficiary recently changed
-- Expected: HIGH risk alert
-
-repeat-phone-number.json
-- Reused phone number
-- Expected: Fraud rule triggered
-
-beneficiary-change.json
-- Beneficiary changed shortly before claim
-- Expected: Fraud rule triggered
-
-low-risk-claim.json
-- Normal claim
-- Expected: No fraud alert
----
 
 ## Sample Response
 
@@ -254,16 +243,20 @@ low-risk-claim.json
 ]
 ```
 
----
+![img_1.png](img_1.png)
 
 ## Current Fraud Rules
 
-### Claims Fraud Rule
+### Claims Fraud 
 
-Triggers when:
+Trigger:
 
-- Claim amount exceeds predefined threshold.
-- Potential fraud indicators are detected.
+- Claim amount exceeds R50,000
+
+Outcome:
+
+- Creates a fraud alert
+- Creates an investigation case
 
 Current threshold:
 
@@ -272,6 +265,64 @@ fraud:
   claims:
     threshold: 50000
 ```
+### Beneficiary Fraud 
+
+Trigger:
+
+- Beneficiary was changed less than 30 days before payout
+
+Indicators:
+
+- Beneficiary changed shortly before claim settlement
+- Recently updated beneficiary account receiving payout
+
+Outcome:
+
+- Creates a HIGH risk fraud alert
+- Creates an investigation case
+
+### Identity Fraud
+
+Trigger:
+
+- More than 3 fraud events are associated with the same phone number within 30 days
+
+Indicators:
+
+- Repeated use of the same phone number
+- High frequency claim submissions
+
+Outcome:
+
+- Create a HIGH risk fraud alert
+- Creates an investigation case
+
+### Mule Account Fraud
+
+Trigger:
+
+- Multiple customers associated with the same beneficiary account
+
+Indicators:
+
+- Shared beneficiary account
+- Suspicious payout destination
+
+Outcome:
+
+- Creates a HIGH risk fraud alert
+- Creates an investigation case
+
+### Funds Hold Rule
+
+Trigger:
+
+- High-risk fraud event identified
+
+Outcome:
+
+- Funds hold process initiated
+- Alert and case creation
 
 ---
 
