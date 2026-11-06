@@ -13,11 +13,16 @@ public class FraudRuleEngine {
 
     private final List<FraudRuleEvaluator> rules;
 
-    public List<String> evaluate(FraudEvent event) {
+        public List<String> evaluate(FraudEvent event) {
 
-        return rules.stream()
-                .filter(rule -> rule.evaluate(event))
-                .map(FraudRuleEvaluator::getRuleName)
-                .toList();
+            System.out.println("=== REGISTERED RULES ===");
+
+            rules.forEach(rule ->
+                    System.out.println(rule.getClass().getName()));
+
+            return rules.stream()
+                    .filter(rule -> rule.evaluate(event))
+                    .map(FraudRuleEvaluator::getRuleName)
+                    .toList();
+        }
     }
-}

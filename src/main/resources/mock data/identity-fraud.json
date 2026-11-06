@@ -1,0 +1,13 @@
+{
+  "customerId": "CUST100",
+  "policyNumber": "POL100",
+  "amount": 0,
+  "claimAmount": 10000,
+  "eventDate": "2026-11-01T10:00:00",
+  "phoneNumber": "0811111111",
+  "beneficiaryAccount": "ACC100",
+  "policyStartDate": "2026-01-01",
+  "claimDate": "2026-11-01",
+  "payoutReceived": false,
+  "beneficiaryChanged": false
+}

@@ -8,6 +8,7 @@ import lombok.*;
 import java.math.BigDecimal;
 import java.time.LocalDate;
 import java.time.LocalDateTime;
+import java.time.temporal.Temporal;
 import java.util.UUID;
 
 @Entity
@@ -47,5 +48,8 @@ public class FraudEvent {
     private Boolean beneficiaryChanged;
 
     private LocalDate beneficiaryChangeDate;
+
+    private LocalDate payoutDate;
+
 
 }

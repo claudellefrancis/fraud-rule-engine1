@@ -33,6 +33,8 @@ public class FraudDetectionService {
 
     public List<String> evaluate(FraudEvent event) {
 
+        System.out.println("FraudDetectionService called");
+
         List<String> triggeredRules =
                 fraudRuleEngine.evaluate(event);
 

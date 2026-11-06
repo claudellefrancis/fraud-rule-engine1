@@ -1,15 +1,15 @@
 {
-  "eventId": "33333333-3333-3333-3333-333333333333",
   "customerId": "CUST003",
   "policyNumber": "POL003",
   "amount": 0,
   "claimAmount": 25000,
-  "eventDate": "2026-11-04T14:20:00Z",
+  "eventDate": "2026-11-04T14:20:00",
   "phoneNumber": "0839876543",
   "beneficiaryAccount": "ACC789",
   "policyStartDate": "2026-02-01",
-  "claimDate": "2026-11-04",
+  "claimDate": "2026-02-04",
   "payoutReceived": true,
   "beneficiaryChanged": true,
-  "beneficiaryChangeDate": "2026-11-01"
+  "beneficiaryChangeDate": "2026-02-03",
+  "payoutDate": "2026-02-04"
 }

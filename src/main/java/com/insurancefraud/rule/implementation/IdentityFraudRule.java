@@ -28,6 +28,9 @@ public class IdentityFraudRule
                                 event.getPhoneNumber(),
                                 thirtyDaysAgo);
 
+        System.out.println("Phone Number: " + event.getPhoneNumber());
+        System.out.println("Count: " + count);
+
                                 return  count > 3;
     }
 
