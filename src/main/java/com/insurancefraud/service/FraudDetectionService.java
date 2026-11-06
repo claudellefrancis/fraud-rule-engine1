@@ -35,18 +35,18 @@ public class FraudDetectionService {
 
         System.out.println("FraudDetectionService called");
 
+        FraudEvent savedEvent =
+                fraudEventRepository.save(event);
+
         List<String> triggeredRules =
-                fraudRuleEngine.evaluate(event);
+                fraudRuleEngine.evaluate(savedEvent);
 
-        if(!triggeredRules.isEmpty()) {
-
-            FraudEvent savedEvent = fraudEventRepository.save(event);
+        if (!triggeredRules.isEmpty()) {
 
             FraudAlert alert =
                     FraudAlert.builder()
                             .fraudEvent(savedEvent)
-                            .ruleTriggered(
-                                    triggeredRules.get(0))
+                            .ruleTriggered(triggeredRules.get(0))
                             .riskLevel(RiskLevel.HIGH)
                             .status(AlertStatus.OPEN)
                             .alertDate(LocalDateTime.now())
@@ -63,13 +63,9 @@ public class FraudDetectionService {
                             .createdDate(LocalDateTime.now())
                             .build();
 
-            System.out.println("Case ID = " + fraudCase.getCaseId());
-            System.out.println("Alert ID = " + savedAlert.getAlertId());
             fraudCaseRepository.save(fraudCase);
-
         }
 
         return triggeredRules;
     }
-
 }
